@@ -10,24 +10,17 @@ namespace LeetCode_C_.TopInterview150
     {
         public int RemoveElement(int[] nums, int val)
         {
-            int answer = 0;
-            List<int> data = new List<int>();
-
+            int existed = 0;
+            
             for (int i = 0; i < nums.Length; i++)
             {
                 if(nums[i] != val)
                 {
-                    data.Add(nums[i]);
-                    answer++;
+                    nums[existed++] = nums[i];
                 }
             }
 
-            for(int i = 0; i < data.Count; ++i)
-            {
-                nums[i] = data[i];
-            }
-
-            return answer;
+            return existed;
         }
     }
 }
