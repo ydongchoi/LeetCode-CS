@@ -1,8 +1,7 @@
-﻿
-// Time Complexity : O(N), Spacious Complexity : O(1)
+﻿// Time Complexity : O(N), Spacious Complexity : O(1)
 // Link : https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
 
-namespace LeetCode_C_.TopInterview150
+namespace LeetCode_C_.TopInterview150.SlidingWindow
 {
     public class _121_BestTimeToBuyAndSellStock
     {

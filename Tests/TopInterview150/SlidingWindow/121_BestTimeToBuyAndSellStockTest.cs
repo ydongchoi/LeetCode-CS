@@ -1,11 +1,11 @@
-﻿using LeetCode_C_.TopInterview150;
+﻿using LeetCode_C_.TopInterview150.SlidingWindow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests.TopInterview150
+namespace Tests.TopInterview150.SlidingWindow
 {
     public class _121_BestTimeToBuyAndSellStockTest
     {
@@ -17,8 +17,8 @@ namespace Tests.TopInterview150
         }
 
         [Theory]
-        [InlineData(new int[] {7,1,5,3,6,4}, 5)]
-        [InlineData(new int[] {7,6,4,3,1}, 0)]
+        [InlineData(new int[] { 7, 1, 5, 3, 6, 4 }, 5)]
+        [InlineData(new int[] { 7, 6, 4, 3, 1 }, 0)]
         public void MaxProfit_Input_Returns(int[] prices, int expectedResult)
         {
             // Act

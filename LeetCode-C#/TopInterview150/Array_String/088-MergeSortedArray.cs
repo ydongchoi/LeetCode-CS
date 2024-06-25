@@ -1,7 +1,7 @@
 ﻿
 // https://leetcode.com/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150
 
-namespace LeetCode_C_.TopInterview150
+namespace LeetCode_C_.TopInterview150.Array_String
 {
     public class _088_MergeSortedArray
     {

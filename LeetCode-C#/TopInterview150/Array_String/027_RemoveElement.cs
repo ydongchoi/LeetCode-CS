@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode_C_.TopInterview150
+namespace LeetCode_C_.TopInterview150.Array_String
 {
     public class _027_RemoveElement
     {

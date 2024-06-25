@@ -1,11 +1,11 @@
-﻿using LeetCode_C_.TopInterview150;
+﻿using LeetCode_C_.TopInterview150.Array_String;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests.TopInterview150
+namespace Tests.TopInterview150.Array_String
 {
     public class _080_RemoveDuplicatesFromSortedArrayII_Test
     {

@@ -4,7 +4,7 @@
 
 using System.Security.Cryptography;
 
-namespace LeetCode_C_.TopInterview150
+namespace LeetCode_C_.TopInterview150.Array_String
 {
     public class _169_MajorityElement
     {

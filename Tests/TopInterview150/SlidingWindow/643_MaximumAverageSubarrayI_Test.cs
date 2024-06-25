@@ -1,11 +1,11 @@
-﻿using LeetCode_C_.TopInterview150;
+﻿using LeetCode_C_.TopInterview150.SlidingWindow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests.TopInterview150
+namespace Tests.TopInterview150.SlidingWindow
 {
     public class _643_MaximumAverageSubarrayI_Test
     {
@@ -17,8 +17,8 @@ namespace Tests.TopInterview150
         }
 
         [Theory]
-        [InlineData(new int[] {1,12,-5,-6,50,3}, 4, 12.75000)]
-        [InlineData(new int[] {5}, 1, 5.00000)]
+        [InlineData(new int[] { 1, 12, -5, -6, 50, 3 }, 4, 12.75000)]
+        [InlineData(new int[] { 5 }, 1, 5.00000)]
         public void FindMaxAverage(int[] nums, int k, double expectedResult)
         {
             // Act
