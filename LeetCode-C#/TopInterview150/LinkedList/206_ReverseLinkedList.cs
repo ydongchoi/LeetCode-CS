@@ -1,4 +1,6 @@
 ﻿
+// Time Complexity : O(N), Spacious Complexity : O(N)
+// Link : https://leetcode.com/problems/reverse-linked-list/description/
 
 namespace LeetCode_C_.TopInterview150.LinkedList
 {
