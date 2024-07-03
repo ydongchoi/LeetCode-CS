@@ -1,5 +1,5 @@
 ﻿
-// Time Complexity : O(N), Spacious Complexity : O(N)
+// Time Complexity : O(M + N), Spacious Complexity : O(1)
 // Link : https://leetcode.com/problems/intersection-of-two-linked-lists/
 
 namespace LeetCode_C_.TopInterview150.LinkedList
@@ -8,24 +8,40 @@ namespace LeetCode_C_.TopInterview150.LinkedList
     {
         public ListNode GetIntersectionNode(ListNode headA, ListNode headB)
         {
-            HashSet<ListNode> set = new HashSet<ListNode>();
+            ListNode curA = headA; ListNode curB = headB;
+            int skipA = 0; int skipB = 0;
 
-            while (headA is not null)
+            while(curA.next is not null)
             {
-                set.Add(headA);
-                headA = headA.next;
+                skipA++;
+                curA = curA.next;
             }
 
-            while (headB is not null)
+            while (curB.next is not null)
             {
-                if (set.Contains(headB))
-                {
-                    return headB;
-                }
-                headB = headB.next;
+                skipB++;
+                curB = curB.next;
             }
 
-            return null;
+            if (curA != curB) return null;
+
+            int remain = Math.Abs(skipB - skipA);
+            if(skipA > skipB)
+            {
+                for (int idx = 0; idx < remain; ++idx) headA = headA.next;
+
+            }else if(skipB > skipA)
+            {
+                for (int idx = 0; idx < remain; ++idx) headB = headB.next;
+            }
+
+            while(headA is not null && headB is not null)
+            {
+                if (headA == headB) break;
+                headA = headA.next; headB = headB.next;
+            }
+
+            return headA;
         }
     }
 }
