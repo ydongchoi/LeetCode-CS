@@ -1,10 +1,11 @@
 ﻿
-// Time Complexity : O(N), Spacious Complexity : O(N)
+// Time Complexity : O(N), Spacious Complexity : O(1)
 // Link : https://leetcode.com/problems/reverse-linked-list/description/
+
+using System.Runtime.Versioning;
 
 namespace LeetCode_C_.TopInterview150.LinkedList
 {
-
     public class ListNode {
         public int val;
         public ListNode next;
@@ -18,26 +19,24 @@ namespace LeetCode_C_.TopInterview150.LinkedList
     {
         public ListNode ReverseList(ListNode head)
         {
-            Stack<ListNode> data = new Stack<ListNode>();
+            if (head is null) return null;
 
-            while (head is not null)
+            ListNode prev = head;
+            ListNode cur = head.next;
+
+            while(cur is not null)
             {
-                data.Push(head);
-                head = head.next;
+                ListNode tmp = cur;
+                ListNode tmpNext = cur.next;
+                
+                cur.next = prev;
+
+                prev = tmp;
+                cur = tmpNext;
             }
+            head.next = null;
 
-            ListNode start = data.Count == 0 ? null : data.Pop();
-            ListNode answer = start;
-
-            while (data.Count != 0)
-            {
-                start.next = data.Pop();
-                start = start.next;
-            }
-
-            if (start is not null) start.next = null;
-
-            return answer;
+            return prev;
         }
     }
 }

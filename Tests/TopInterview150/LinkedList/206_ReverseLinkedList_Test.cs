@@ -40,6 +40,7 @@ namespace Tests.TopInterview150.LinkedList
                 Assert.Equal(expResult, result.val);
                 result = result.next;
             }
+            Assert.Equal(null, result);
         }
     }
 }
