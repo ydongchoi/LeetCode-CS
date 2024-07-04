@@ -10,32 +10,19 @@ namespace LeetCode_C_.TopInterview150.LinkedList
         {
             if (head.next is null) return;
 
-            // Count Node
-            ListNode cur = head; int nodeCnt = 0;
-            while(cur is not null)
+            // Split Linked List
+            ListNode slow = head; ListNode fast = head;
+            while (fast.next is not null && fast.next.next is not null)
             {
-                nodeCnt++;
-                cur = cur.next;
-            }
-
-            // Seperate Linked List to two parts
-            int halfCnt = (nodeCnt % 2) == 1 ? nodeCnt / 2 + 1 : nodeCnt / 2;
-            ListNode prev = head;  cur = head.next;
-            for (int idx = 0; idx < halfCnt; idx++)
-            {
-                if (idx == halfCnt - 1)
-                {
-                    prev.next = null;
-                    break;
-                }
-                prev = prev.next;
-                cur = cur.next;
+                slow = slow.next;
+                fast = fast.next.next;
             }
 
             // Reverse Second Linked List
-            ListNode secondStart = cur;
-            prev = secondStart;
-            cur = secondStart.next;
+            ListNode secondStart = slow.next;
+            slow.next = null;
+            ListNode prev = secondStart;
+            ListNode cur = secondStart.next;
             prev.next = null;
             while(cur is not null)
             {
@@ -58,8 +45,6 @@ namespace LeetCode_C_.TopInterview150.LinkedList
                 prev = prevTmp;
                 cur = tmp;
             }
-
-           
         }
     }
 }
