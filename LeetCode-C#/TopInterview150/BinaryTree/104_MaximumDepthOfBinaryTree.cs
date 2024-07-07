@@ -2,6 +2,8 @@
 // Time Complexity : O(N), Spacious Complexity : O(1)
 // Link : https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=top-interview-150
 
+using System.Runtime.ConstrainedExecution;
+
 namespace LeetCode_C_.TopInterview150.BinaryTree
 {
     public class TreeNode
@@ -43,15 +45,10 @@ namespace LeetCode_C_.TopInterview150.BinaryTree
     {
         public int MaxDepth(TreeNode root)
         {
-            return PreOrder(root, 0);
-        }
+            if (root is null) return 0;
 
-        public int PreOrder(TreeNode cur, int depth)
-        {
-            if (cur is null) return depth;
-
-            int left = PreOrder(cur.left, depth + 1);
-            int right = PreOrder(cur.right, depth + 1);
+            int left = MaxDepth(root.left) + 1;
+            int right = MaxDepth(root.right) + 1;
 
             return left > right ? left : right;
         }
