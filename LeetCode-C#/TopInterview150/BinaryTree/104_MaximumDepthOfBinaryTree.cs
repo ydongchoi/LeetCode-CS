@@ -41,29 +41,19 @@ namespace LeetCode_C_.TopInterview150.BinaryTree
 
     public class _104_MaximumDepthOfBinaryTree
     {
-        private int maxDepth;
-
         public int MaxDepth(TreeNode root)
         {
-            maxDepth = 0;
-
-            PreOrder(root, 0);
-
-            return maxDepth;
+            return PreOrder(root, 0);
         }
 
-        public void PreOrder(TreeNode cur, int depth)
+        public int PreOrder(TreeNode cur, int depth)
         {
-            if(cur is null)
-            {
-                maxDepth = maxDepth > depth ? maxDepth : depth;
-                return;
-            }
+            if (cur is null) return depth;
 
-            PreOrder(cur.left, depth + 1);
-            PreOrder(cur.right, depth + 1);
+            int left = PreOrder(cur.left, depth + 1);
+            int right = PreOrder(cur.right, depth + 1);
 
-            return;
+            return left > right ? left : right;
         }
     }
 }
