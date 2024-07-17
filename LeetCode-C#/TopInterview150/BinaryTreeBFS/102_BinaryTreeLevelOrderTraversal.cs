@@ -1,6 +1,6 @@
 ﻿using LeetCode_C_.TopInterview150.BinaryTree;
 
-// Time Complexity : O(NM), Spacious Complexity : O(1)
+// Time Complexity : O(N), Spacious Complexity : O(N)
 // Link : https://leetcode.com/problems/binary-tree-level-order-traversal/description/?envType=study-plan-v2&envId=top-interview-150
 
 namespace LeetCode_C_.TopInterview150.BinaryTreeBFS
