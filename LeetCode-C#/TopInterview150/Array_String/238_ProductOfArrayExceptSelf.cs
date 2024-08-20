@@ -1,5 +1,5 @@
 ﻿
-// Time Complexity : O(N), Spacious Complexity : O(1)
+// Time Complexity : O(N), Spacious Complexity : O(N)
 // Link : https://leetcode.com/problems/product-of-array-except-self/description/?envType=study-plan-v2&envId=top-interview-150
 
 namespace LeetCode_C_.TopInterview150.Array_String
@@ -8,34 +8,39 @@ namespace LeetCode_C_.TopInterview150.Array_String
     {
         public int[] ProductExceptSelf(int[] nums)
         {
-            int product = 1;
-            int zeroCnt = 0;
-            int zeroIdx = 0;
+            int len = nums.Length;
+            int[] memoization = new int[len];
+            int[] reverseMemoization = new int[len];
+            int[] answer = new int[len];
 
-            for(int idx = 0; idx < nums.Length; ++idx)
+            memoization[0] = nums[0];
+            reverseMemoization[len - 1] = nums[len - 1];
+
+            for (int idx = 1; idx < len; ++idx)
             {
-                if (nums[idx] == 0)
+                memoization[idx] = nums[idx] * memoization[idx - 1];
+                reverseMemoization[len - 1 - idx] = nums[len - 1 - idx] * reverseMemoization[len - idx];
+            }
+
+            for (int idx = 0; idx < len; ++idx)
+            {
+                int prev = idx - 1; int next = idx + 1;
+
+                if (idx == 0)
                 {
-                    zeroCnt++; zeroIdx = idx;
-                    continue;
+                    answer[idx] = reverseMemoization[next];
                 }
-
-                product = product * nums[idx];
+                else if (idx == len - 1)
+                {
+                    answer[idx] = memoization[prev];
+                }
+                else
+                {
+                    answer[idx] = memoization[prev] * reverseMemoization[next];
+                }
             }
 
-            if(zeroCnt >= 1)
-            {
-                for (int idx = 0; idx < nums.Length; ++idx)
-                    nums[idx] = 0;
-                if(zeroCnt == 1) nums[zeroIdx] = product;
-
-            }
-            else
-            {
-                for (int idx = 0; idx < nums.Length; ++idx) nums[idx] = (product / nums[idx]);
-            }
-
-            return nums;
+            return answer;
         }
     }
 }
