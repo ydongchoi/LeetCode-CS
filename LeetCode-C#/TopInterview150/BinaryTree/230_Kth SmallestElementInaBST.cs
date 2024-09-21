@@ -1,29 +1,31 @@
 ﻿
-// Time Complexity : O(NLogN), Spacious Complexity : O(N)
+// Time Complexity : O(N), Spacious Complexity : O(1)
 // Link : https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
 namespace LeetCode_C_.TopInterview150.BinaryTree
 {
     public class _230_Kth_SmallestElementInaBST
     {
+        private int _order;
+        private int _answer;
+
         public int KthSmallest(TreeNode root, int k)
         {
-            List<int> nodes = new List<int>();
-            Queue<TreeNode> queue = new Queue<TreeNode>();
-            queue.Enqueue(root);
+            _order = 0;
 
-            while (queue.Count != 0)
-            {
-                TreeNode cur = queue.Dequeue();
-                nodes.Add(cur.val);
+            InorderTraversal(root, k);
 
-                if (cur.left is not null) queue.Enqueue(cur.left);
-                if (cur.right is not null) queue.Enqueue(cur.right);
-            }
+            return _answer;
+        }
 
-            nodes.Sort();
+        public void InorderTraversal(TreeNode cur, int k)
+        {
+            if (cur is null) return;
 
-            return nodes[k - 1];
+            InorderTraversal(cur.left, k);
+            ++_order;
+            if (_order == k) _answer = cur.val;
+            InorderTraversal(cur.right, k);
         }
     }
 }
