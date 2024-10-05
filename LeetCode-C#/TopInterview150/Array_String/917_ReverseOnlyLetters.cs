@@ -10,22 +10,31 @@ namespace LeetCode_C_.TopInterview150.Array_String
         public string ReverseOnlyLetters(string s)
         {
             StringBuilder sb = new StringBuilder(s);
-            List<char> memo = new List<char>();
+            int start = 0; int end = s.Length - 1;
 
-            for (int idx = s.Length - 1; idx >= 0; idx--)
+            while (start < end)
             {
-                if (isAlphabet(s[idx]))
+                bool sA = isAlphabet(s[start]);
+                bool eA = isAlphabet(s[end]);
+
+                if (sA && eA)
                 {
-                    memo.Add(s[idx]);
+                    char tmp = sb[start];
+                    sb[start] = sb[end];
+                    sb[end] = tmp;
+                    start++; end--;
                 }
-            }
-
-            int start = 0;
-            for (int idx = 0; idx < s.Length; ++idx)
-            {
-                if (isAlphabet(s[idx]))
+                else if (sA == true && eA == false)
                 {
-                    sb[idx] = memo[start++];
+                    end--;
+                }
+                else if (sA == false && eA == true)
+                {
+                    start++;
+                }
+                else
+                {
+                    start++; end--;
                 }
             }
 
